@@ -175,8 +175,8 @@ body, html {
 }
 
 .middlepane {
-	width: 50%;
-	height: 100%;
+	width: 48.6%;
+	height: 400px;
 	float: left;
 	border-radius: 15px;
 	border-collapse: collapse;
@@ -206,9 +206,9 @@ body, html {
 
 .rightpane {
   width: 25%;
-  height: 100%;
-  position: relative;
-  float: right;
+  height: 50%;
+  position: absolute;
+  left: 75%;
   border-radius: 15px;
   padding: 15px;
   border-collapse: collapse;
@@ -259,7 +259,7 @@ body, html {
     bottom: 0px;
     left: 50%;
     transform: translate(-50%, 0%);
-    width: 355px;
+    width: calc(50% - 20px);
     height: 0;
     overflow: hidden;
     transition: 1.5s ease;

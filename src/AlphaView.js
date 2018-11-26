@@ -155,8 +155,6 @@ class AlphaView extends Component {
           </center></h>
           <div class="imageOverlay">
             <img src={this.state.selectedItem.src}
-              width="610px"
-              height="400px"
               class="center"/>
             <div id="div1" class="showMe" style={{ backgroundColor: this.props.state.accentColor }}>
               <p>  <center>

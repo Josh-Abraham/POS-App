@@ -145,6 +145,22 @@ items.push(item4);
     this.setState({ showAdmin: false });
   }
 
+  showAdminPanel() {
+    return (
+      <AdminPanel
+          state={this.state}
+          setLogo={this.setLogo.bind(this)}
+          setTitle={this.setTitle.bind(this)}
+          setColors={this.setColors.bind(this)}
+          addPayOption={this.addPayOption.bind(this)}
+          removePayOption={this.removePayOption.bind(this)}
+          addNewItem={this.addNewItem.bind(this)}
+          removeItem={this.removeItem.bind(this)}
+          hideAdmin={this.hideAdmin.bind(this)}
+      />
+    )
+  }
+
 
   // Global Admin Functions
   addNewItem() {
