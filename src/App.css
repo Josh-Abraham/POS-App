@@ -90,26 +90,42 @@ top: 700px;
 }
 
 .modalAdmin {
-    position: fixed; /* Stay in place */
+    position: absolute;; /* Stay in place */
     z-index: 1; /* Sit on top */
-    padding-top: 400px; /* Location of the box */
-    padding-bottom: 30px;
-    left: 0;
-    top: 0;
-    width: 100%; /* Full width */
-    height: 100%; /* Full height */
+    right: 0px;
+    bottom: 0px;
+
     overflow: auto; /* Enable scroll if needed */
  /* Black w/ opacity */
 }
 
 .modalAdminContent {
     margin: auto;
+    margin-top: -30px;
     padding: 20px;
     border: 1px solid #888;
-    width: 70%;
-    overflow-y: auto;
+    width: 500px;
+    overflow-y: none;
     height: 400px;
     background-color: rgba(234, 235, 237);
+}
+
+.adminDD {
+  display: flex;
+  margin-top: -30px;
+  flex-direction: row;
+  align-items: center;
+}
+
+.dropDown {
+  margin-left: 25px;
+  height: 25px;
+}
+
+.closeAdmin {
+  position: absolute;
+  top: 20px;
+  right: 20px
 }
 
 /* Modal Content */

@@ -186,12 +186,14 @@ class AdminPanel extends Component {
       <div class="modalAdmin">
       <div class="modalAdminContent">
         <h1>  Admin Panel  </h1>
-        <h4> Select Admin Option </h4>
+        <span class="closeAdmin"  onClick={this.props.hideAdmin}>&times;</span>
 
-        <select id="mySelect2" style={{ backgroundColor: this.props.state.accentColor }} onClick={this.changeSelection.bind(this)}>
-        {adminOutput}
+        <div class="adminDD">
+          <h4> Select Admin Option </h4>
+          <select id="mySelect2" class="dropDown" style={{ backgroundColor: this.props.state.accentColor}} onClick={this.changeSelection.bind(this)}>
+          {adminOutput}
         </select>
-        <button  onClick={this.props.hideAdmin}> Hide Admin </button>
+        </div>
           {adminObj}
       </div>
       </div>
