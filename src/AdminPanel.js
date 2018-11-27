@@ -3,31 +3,55 @@ import Proptypes from 'prop-types';
 import './App.css';
 
 class AdminPanel extends Component {
-  render() {
+  constructor(props) {
+    super(props);
+    this.state = {
+      adminOptions: [
+        'Top Bar Style',
+        'Change Color Palette',
+        'Add Payment Option',
+        'Remove Pay Option',
+        'Add Shop Item',
+        'Remove Shop Item'
+      ],
+      adminOption: 'Top Bar Style'
+    }
+  }
+  changeSelection() {
+    const type = document.getElementById('mySelect2').value;
+    this.setState({ adminOption: type });
+  }
+
+  createAdminOption(type) {
     return (
-      <div class="modalAdmin">
-      <div class="modalAdminContent">
-        <h1>  Admin Panel  </h1>
-        <button  onClick={this.props.hideAdmin}> Hide Admin </button>
-        <form>
-        <fieldset>
-          <legend>Web Style</legend>
-          <p>
-            <label>Set New Website Logo</label>
-            <input type = "text"
-                id = "logoURL"
-                placeholder = "Logo URL" />
-          </p>
-              <button class="button2"  type="button" onClick={this.props.setLogo}> Set Logo </button>
-          <p>
-            <label>Set New Website Title</label>
-            <input type = "text"
-                id = "titleText"
-                placeholder = "Website Title" />
-          </p>
-              <button class="button2"  type="button" onClick={this.props.setTitle}> Set Title </button>
-        </fieldset>
+      <option id={type} value={type}>{type}</option>
+    );
+  }
+  createAdminObject() {
+    if (this.state.adminOption === 'Top Bar Style') {
+        return (
+          <form>
+            <fieldset>
+            <legend>Web Style</legend>
+            <p>
+              <label>Set New Website Logo</label>
+              <input type = "text"
+                  id = "logoURL"
+                  placeholder = "Logo URL" />
+            </p>
+                <button class="button2"  type="button" onClick={this.props.setLogo}> Set Logo </button>
+            <p>
+              <label>Set New Website Title</label>
+              <input type = "text"
+                  id = "titleText"
+                  placeholder = "Website Title" />
+            </p>
+            <button class="button2"  type="button" onClick={this.props.setTitle}> Set Title </button>
+          </fieldset>
         </form>
+      );
+    } else if (this.state.adminOption === 'Change Color Palette') {
+      return (
         <form>
         <fieldset>
           <legend>Colour Palette </legend>
@@ -52,6 +76,9 @@ class AdminPanel extends Component {
               <button class="button2"  type="button" onClick={this.props.setColors}> Set Palette </button>
         </fieldset>
         </form>
+      );
+    } else if (this.state.adminOption === 'Add Payment Option') {
+      return (
         <form>
           <fieldset>
             <legend>Add Payment Option</legend>
@@ -76,6 +103,9 @@ class AdminPanel extends Component {
               <button  class="button2" type="button" onClick={this.props.addPayOption}> Add Option </button>
           </fieldset>
         </form>
+      );
+    } else if (this.state.adminOption === 'Remove Pay Option') {
+      return (
         <form>
           <fieldset>
             <legend>Remove Payment Option</legend>
@@ -88,6 +118,9 @@ class AdminPanel extends Component {
               <button  class="button2" type="button" onClick={this.props.removePayOption}> Remove Option </button>
           </fieldset>
         </form>
+      );
+    } else if (this.state.adminOption === 'Add Shop Item') {
+      return (
         <form>
         <fieldset>
           <legend>Add item</legend>
@@ -125,17 +158,41 @@ class AdminPanel extends Component {
             <button class="button2"  type="button" onClick={this.props.addNewItem}> Add Item </button>
         </fieldset>
       </form>
+    );
+  } else if (this.state.adminOption === 'Remove Shop Item') {
+    return (
       <form>
-        <fieldset>
-          <legend>Remove item</legend>
-          <p>
-            <input type = "text"
-              id = "idRemove"
-              placeholder = "ID" />
-          </p>
-            <button  class="button2" type="button" onClick={this.props.removeItem}> Remove Item </button>
+      <fieldset>
+        <legend>Remove item</legend>
+        <p>
+          <input type = "text"
+            id = "idRemove"
+            placeholder = "ID" />
+        </p>
+          <button  class="button2" type="button" onClick={this.props.removeItem}> Remove Item </button>
         </fieldset>
       </form>
+    );
+  }
+
+    return <div/>;
+  }
+
+  render() {
+    const adminOutput = this.state.adminOptions.map((type) => this.createAdminOption(type));
+    const adminObj = this.createAdminObject();
+
+    return (
+      <div class="modalAdmin">
+      <div class="modalAdminContent">
+        <h1>  Admin Panel  </h1>
+        <h4> Select Admin Option </h4>
+
+        <select id="mySelect2" style={{ backgroundColor: this.props.state.accentColor }} onClick={this.changeSelection.bind(this)}>
+        {adminOutput}
+        </select>
+        <button  onClick={this.props.hideAdmin}> Hide Admin </button>
+          {adminObj}
       </div>
       </div>
     );
