@@ -88,6 +88,14 @@ class AlphaView extends Component {
     );
   }
 
+  createCategories(option) {
+    return (
+      <div>
+          <button class="unStyle" id={option} value={option} onClick={this.props.setCurrentCategory.bind(this, `${option}`)}>{option}</button>
+      </div>
+    );
+  }
+
   onChange(newState) {
     this.setState({ view: newState });
   }
@@ -127,11 +135,12 @@ class AlphaView extends Component {
   }
 
   leftPane(listItems) {
+    const categoryOptions = this.props.state.categories.map((objects) => this.createCategories(objects));
+
     return(
       <div class="outer">
         <div id="mySelect" style={{ backgroundColor: this.props.state.accentColor }} class="topnav">
-          <button class="unStyle" id="Womens" value="Womens" onClick={this.props.setCurrentCategory.bind(this, "Womens")}>Womens</button>
-          <button class="unStyle" id="Mens" value="Mens" onClick={this.props.setCurrentCategory.bind(this, "Mens")}>Mens</button>
+          {categoryOptions}
         </div>
         <div class="leftpane">
           <div class="leftItems">

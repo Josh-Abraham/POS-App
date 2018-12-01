@@ -34,6 +34,7 @@ class App extends Component {
                   'Student Name,Student Number,Passport York Password'],
     sortMethods: [ 'Alphabetical', 'Price - Low to High', 'Price - High to Low'],
     sortMethodSelected: 'Alphabetical',
+    categories: ['Womens'],
     category: 'Womens'
   }
 }
@@ -96,6 +97,11 @@ items.push(item4);
     this.setState({ view: newState });
   }
 
+  clone(src) {
+  return JSON.parse(JSON.stringify(src));
+}
+
+
   toggleAdmin() {
     this.setState({ showModal: !this.state.showModal });
   }
@@ -157,6 +163,7 @@ items.push(item4);
           addNewItem={this.addNewItem.bind(this)}
           removeItem={this.removeItem.bind(this)}
           hideAdmin={this.hideAdmin.bind(this)}
+          addCategory={this.addCategory.bind(this)}
       />
     )
   }
@@ -237,6 +244,13 @@ items.push(item4);
     }
   }
 
+  addCategory() {
+      const type = document.getElementById('CategoryAdd').value;
+      const newCategories = this.clone(this.state.categories);
+      newCategories.push(type);
+      this.setState({ categories: newCategories });
+  }
+
   createSortMethods (type) {
     return (
       <option id={type} value={type}>{type}</option>
@@ -251,6 +265,7 @@ items.push(item4);
   setCurrentCategory(newCategory) {
     this.setState({ category: newCategory });
   }
+
 
   sortItems(type) {
     let baseItems = [];
@@ -320,7 +335,7 @@ items.push(item4);
             modal={modal}
             adminPanel={adminPanel}
             toggleAdmin={this.toggleAdmin.bind(this)}
-              onChange = {this.onChange.bind(this)}
+            onChange = {this.onChange.bind(this)}
           />
       )
       } else {
