@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import AdminPanel from './AdminPanel.js';
 import AlphaView from './AlphaView.js';
+import { ItemList } from './ItemData.json';
 
 
 class App extends Component {
@@ -16,14 +17,7 @@ class App extends Component {
     showAdmin: false,
     companyLogo: 'https://images.ecosia.org/fvnMKNHdkdTvHOB4DOU5zy-4S1c=/0x390/smart/http%3A%2F%2Fjeffwarren.org%2Fwp-content%2Fuploads%2Fyork_logo.png',
     time: 1,
-    selectedItem: {
-      name: 'Mom Crew Neck',
-      price: 34.95,
-      src: 'https://www.bookstore.yorku.ca/outerweb/product_images/CREW_NECK_MOM_L.jpg',
-      description: 'Comfy crew neck style sweatshirt, the perfect gift for Mom; 80% Cotton, 20% Polyester; Machine wash; Size and fit: Model is 5’4” wearing a Small',
-      id: '#SWW3467',
-      category: 'Womens'
-  },
+    selectedItem: ItemList.item1,
     addedItems: [],
     secondaryColor: '#f2d7d7',
     primaryColor: '#bf3131',
@@ -41,56 +35,8 @@ class App extends Component {
 
 
 createItems() {
-  let x = 0;
-  const items = [];
-  let  item0 = {
-        name: 'Mom Crew Neck',
-        price: 34.95,
-        src: 'https://www.bookstore.yorku.ca/outerweb/product_images/CREW_NECK_MOM_L.jpg',
-        description: 'Comfy crew neck style sweatshirt, the perfect gift for Mom; 80% Cotton, 20% Polyester; Machine wash; Size and fit: Model is 5’4” wearing a Small',
-        id: '#SWW3467',
-        category: 'Womens'
-    };
-let  item1 = {
-        name: 'Unisex Deluxe Hood',
-        price: 59.95,
-        src: 'https://www.bookstore.yorku.ca/outerweb/product_images/UNISEX_DELUXE_HOOD_L.jpg',
-        description: 'Hooded unisex sweatshirt, perfect for a cozy fall day; 90% Cotton, 10% Polyester; Machine wash; Size and fit: Model is 6’0” and male, wearing a Large',
-        id: '#SWU2637',
-        category: 'Womens'
-    };
-let  item2 = {
-        name: 'Unisex French Terry Hood',
-        price: 62.95,
-        src: 'https://www.bookstore.yorku.ca/outerweb/product_images/WOMENS_TWILL_HOODIE_L.jpg',
-        description: 'Thin, hooded unisex sweatshirt, perfect for warmer fall days; 70% Cotton, 30% Polyester; Machine wash cold; Size and fit: Model is 5’8” and male, wearing a Medium',
-        id: '#SWU9940',
-        category: 'Womens'
-    };
-let  item3 = {
-        name: 'Renu Her Work Sock Crew',
-        price: 70.00,
-        src: 'https://www.bookstore.yorku.ca/outerweb/product_images/RENU_HER_WORK_SOCK_CREW_L.jpg',
-        description: 'Knit crew neck style sweatshirt; 55% Cotton, 25% Acrylic, 15% Nylon, 5% Wool; Machine wash; Size and Fit: Model is 5’5” wearing a Small',
-        id: '#SWW7734',
-        category: 'Womens'
-    };
-let  item4 = {
-        name: 'Womens ¼ Zip Fleece',
-        price: 69.95,
-        src: 'https://www.bookstore.yorku.ca/outerweb/product_images/WOMENS_QUARTER_ZIP_FLEECE_SWEATER_L.jpg',
-        description: 'Fleece knit zip-up sweater for cold winter nights; 60% Fleece, 40% Cotton; Machine wash cold; Size and fit: Model is 5’6”, wearing a Medium',
-        id: '#SWW9463',
-        category: 'Womens'
-    };
-items.push(item0);
-items.push(item1);
-items.push(item2);
-items.push(item3);
-items.push(item4);
 
-
-  return items;
+  return Object.values(ItemList);
 }
 
   onChange(newState) {
