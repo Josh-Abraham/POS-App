@@ -28,7 +28,7 @@ class App extends Component {
                   'Student Name,Student Number,Passport York Password'],
     sortMethods: [ 'Alphabetical', 'Price - Low to High', 'Price - High to Low'],
     sortMethodSelected: 'Alphabetical',
-    categories: ['Womens'],
+    categories: ['Womens', 'Mens', 'Gifts'],
     category: 'Womens'
   }
 }
@@ -229,6 +229,7 @@ createItems() {
           for (let i = 0; i < baseItems.length; i++) {
             if (baseItems[i].name === result[x]) {
               items.push(baseItems[i]);
+              baseItems.splice(i, 1);
               break;
             }
           }
@@ -241,6 +242,7 @@ createItems() {
           for (let i = 0; i < baseItems.length; i++) {
             if (baseItems[i].price === result[x]) {
               items.push(baseItems[i]);
+              baseItems.splice(i, 1);
               break;
             }
           }
@@ -250,6 +252,7 @@ createItems() {
           for (let i = 0; i < baseItems.length; i++) {
             if (baseItems[i].price === result[x]) {
               items.push(baseItems[i]);
+              baseItems.splice(i, 1);
               break;
             }
           }

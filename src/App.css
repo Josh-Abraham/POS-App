@@ -36,8 +36,9 @@ top: 700px;
 }
 
 .logo {
-  width: 194px;
+  padding-left: 10px;
   height: 100px;
+  object-fit: contain;
 
 }
 .outer {
@@ -155,8 +156,13 @@ top: 700px;
   padding-right: 10px;
 }
 .leftImage {
-  width: 100px;
-  height: 100px;
+  margin-top: -7px;
+  padding-left: 5px;
+  padding-right: 5px;
+  width: 90px;
+  height: 90px;
+  object-fit: cover;
+  mix-blend-mode: multiply;
 }
 
 body, html {
@@ -191,8 +197,8 @@ body, html {
 }
 
 .middlepane {
-	width: 48.6%;
-	height: 400px;
+	width: 48%;
+	height: 421px;
 	float: left;
 	border-radius: 15px;
 	border-collapse: collapse;
@@ -221,10 +227,10 @@ body, html {
 }
 
 .rightpane {
-  width: 25%;
+  width: 24%;
   height: 50%;
   position: absolute;
-  left: 75%;
+  left: 74.4%;
   border-radius: 15px;
   padding: 15px;
   border-collapse: collapse;
@@ -263,10 +269,12 @@ body, html {
 
 .center {
   display: block;
+  margin-top: 10px;
   margin-left: auto;
   margin-right: auto;
-  width: 50%;
-  height: 100%;
+  height: 300px;
+  width: 300px;
+  object-fit: cover;
 }
 .showMe {
     position: absolute;
@@ -275,7 +283,7 @@ body, html {
     bottom: 0px;
     left: 50%;
     transform: translate(-50%, 0%);
-    width: calc(50% - 20px);
+    width: 280px;
     height: 0;
     overflow: hidden;
     transition: 1.5s ease;
@@ -379,6 +387,16 @@ li {
 
 .unStyle:hover {
   background-color: #ddd;
+}
+
+.cartScroll {
+  height: 220px;
+  overflow: auto;
+}
+
+.secondaryCartScroll {
+  height: 300px;
+  overflow: auto;
 }
 
 @keyframes App-logo-spin {

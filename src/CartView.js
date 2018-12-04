@@ -123,7 +123,9 @@ class CartView extends Component {
               Cart
             </h1>
             <img class="cart" src="https://images.ecosia.org/UJ5r4gW663JODjpyJFdbtGRaPJ0=/0x390/smart/http%3A%2F%2Fwww.free-icons-download.net%2Fimages%2Fshopping-cart-logo-icon-70706.png"/>
-            {cartItems}
+            <div class="secondaryCartScroll">
+              {cartItems}
+            </div>
             <div class="line"/>
             <div class="topOuter">
             <div> Total Price:  </div>

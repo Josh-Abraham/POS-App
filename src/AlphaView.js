@@ -58,7 +58,7 @@ class AlphaView extends Component {
   createItemObject(item) {
     return (
       <div class="outerContainer" onClick={this.createMiddle.bind(this, item)}>
-        <img src={item.src} class={"leftImage"}/>
+        <img src={item.src} class="leftImage"/>
         <div class="internal">
           <div>
             {item.name}
@@ -108,7 +108,9 @@ class AlphaView extends Component {
       </h1>
       <img class="cart" src="https://images.ecosia.org/UJ5r4gW663JODjpyJFdbtGRaPJ0=/0x390/smart/http%3A%2F%2Fwww.free-icons-download.net%2Fimages%2Fshopping-cart-logo-icon-70706.png"/>
       <button class="button2"  type="button" class="styleRight" onClick={this.resetCart.bind(this)}> Check Out </button>
-      {cartItems}
+      <div class="cartScroll">
+        {cartItems}
+      </div>
       <div class="line"/>
       <div class="topOuter">
       <div> Total Price:  </div>
