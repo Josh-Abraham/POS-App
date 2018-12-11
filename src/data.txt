@@ -1,6 +1,0 @@
-{name: 'Mom Crew Neck',
-price: 34.95,
-src: 'https://www.bookstore.yorku.ca/outerweb/product_images/CREW_NECK_MOM_L.jpg',
-description: 'Comfy crew neck style sweatshirt, the perfect gift for Mom; 80% Cotton, 20% Polyester; Machine wash; Size and fit: Model is 5’4” wearing a Small',
-id: '#SWW3467',
-category: 'Womens'}

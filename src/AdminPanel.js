@@ -13,7 +13,8 @@ class AdminPanel extends Component {
         'Remove Pay Option',
         'Add Shop Item',
         'Remove Shop Item',
-        'Add Shop Category'
+        'Add Shop Category',
+        'Remove Shop Category'
       ],
       adminOption: 'Top Bar Style'
     }
@@ -178,13 +179,27 @@ class AdminPanel extends Component {
     return (
       <form>
       <fieldset>
-        <legend>Add Category</legend>
+        <legend>Add Shop Category</legend>
         <p>
           <input type = "text"
           id = "CategoryAdd"
           placeholder = "Category" />
         </p>
         <button  class="button2" type="button" onClick={this.props.addCategory}> Add Category </button>
+      </fieldset>
+      </form>
+    );
+  } else if (this.state.adminOption === 'Remove Shop Category') {
+    return (
+      <form>
+      <fieldset>
+        <legend>Remove Shop Category</legend>
+        <p>
+          <input type = "text"
+          id = "CategoryRemove"
+          placeholder = "Category" />
+        </p>
+        <button  class="button2" type="button" onClick={this.props.removeCategory}> Remove Category </button>
       </fieldset>
       </form>
     );
@@ -227,6 +242,7 @@ AdminPanel.proptypes = {
   removeItem: Proptypes.func.isRequired,
   hideAdmin: Proptypes.func.isRequired,
   addCategory: Proptypes.func.isRequired,
+  removeCategory: Proptypes.func.isRequired,
 };
 
 export default AdminPanel;

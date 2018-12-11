@@ -159,31 +159,40 @@ class AlphaView extends Component {
   }
 
   middlePane() {
-    return (
-      <div class="middlepane" style={{ backgroundColor: this.props.state.primaryColor }}>
-          <h><center style={{ backgroundColor: this.props.state.accentColor }}>
-            {this.state.selectedItem.name}
-          </center></h>
-          <div class="imageOverlay">
-            <img src={this.state.selectedItem.src}
-              class="center"/>
-            <div id="div1" class="showMe" style={{ backgroundColor: this.props.state.accentColor }}>
-              <p>  <center>
-                {`$${this.state.selectedItem.price}`}
-              </center></p>
-              <p>  <center>
-              {this.state.selectedItem.description}
-              </center></p>
+    if (typeof(this.state.selectedItem) !== 'undefined') {
+      return (
+        <div class="middlepane" style={{ backgroundColor: this.props.state.primaryColor }}>
+            <h><center style={{ backgroundColor: this.props.state.accentColor }}>
+              {this.state.selectedItem.name}
+            </center></h>
+            <div class="imageOverlay">
+              <img src={this.state.selectedItem.src}
+                class="center"/>
+              <div id="div1" class="showMe" style={{ backgroundColor: this.props.state.accentColor }}>
+                <p>  <center>
+                  {`$${this.state.selectedItem.price}`}
+                </center></p>
+                <p>  <center>
+                {this.state.selectedItem.description}
+                </center></p>
+              </div>
             </div>
-          </div>
-          <center><button class="button2" style={{marginTop: '10px'}} type="button" onClick={this.addToCart.bind(this)}> Add to Cart </button></center>
-      </div>
-    )
+            <center><button class="button2" style={{marginTop: '10px'}} type="button" onClick={this.addToCart.bind(this)}> Add to Cart </button></center>
+        </div>
+      );
+    }
+
+    return <div/>
   }
 
 
 
   render() {
+    if (typeof(this.state.selectedItem) !== 'undefined') {
+      if (this.props.state.category !== this.state.selectedItem.category) {
+        this.createMiddle(this.props.listItems[0]);
+      }
+    }
     let index = -1;
     const listItems = this.props.listItems.map((objects) => this.createItemObject(objects));
     const cartItems =  this.state.addedItems.map((objects) => this.createCart(objects, index));

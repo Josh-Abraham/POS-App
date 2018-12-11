@@ -17,7 +17,6 @@ class App extends Component {
     showAdmin: false,
     companyLogo: 'https://images.ecosia.org/fvnMKNHdkdTvHOB4DOU5zy-4S1c=/0x390/smart/http%3A%2F%2Fjeffwarren.org%2Fwp-content%2Fuploads%2Fyork_logo.png',
     time: 1,
-    selectedItem: ItemList.item1,
     addedItems: [],
     secondaryColor: '#f2d7d7',
     primaryColor: '#bf3131',
@@ -110,6 +109,7 @@ createItems() {
           removeItem={this.removeItem.bind(this)}
           hideAdmin={this.hideAdmin.bind(this)}
           addCategory={this.addCategory.bind(this)}
+          removeCategory={this.removeCategory.bind(this)}
       />
     )
   }
@@ -195,6 +195,14 @@ createItems() {
       const newCategories = this.clone(this.state.categories);
       newCategories.push(type);
       this.setState({ categories: newCategories });
+  }
+
+  removeCategory() {
+    const type = document.getElementById('CategoryRemove').value;
+    let newCategories = this.clone(this.state.categories);
+    newCategories = newCategories.filter((item) => item !== type);
+
+    this.setState({ categories: newCategories, category: newCategories[0] });
   }
 
   createSortMethods (type) {
