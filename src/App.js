@@ -33,14 +33,13 @@ class App extends Component {
 }
 
 componentDidMount() {
-  // fetch("http://localhost:5000/home")
-  //   .then(res => res.json())
-  //   .then(
-  //     (result) => {
-  //     this.setState({ webTitle: result.webTitle });
-  //     console.log(result)
-  //     }
-  //   )
+  fetch("http://localhost:5000/mount")
+    .then(res => res.json())
+    .then(
+      (result) => {
+      this.setState({ webTitle: result.webTitle });
+      }
+    )
 }
 
 
