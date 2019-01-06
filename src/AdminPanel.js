@@ -14,7 +14,8 @@ class AdminPanel extends Component {
         'Add Shop Item',
         'Remove Shop Item',
         'Add Shop Category',
-        'Remove Shop Category'
+        'Remove Shop Category',
+        'New'
       ],
       adminOption: 'Top Bar Style'
     }
@@ -203,9 +204,29 @@ class AdminPanel extends Component {
       </fieldset>
       </form>
     );
+  } else if (this.state.adminOption === 'New') {
+    document.getElementById('topPane').addEventListener("mouseenter", this.display.bind(this));
+    console.log(  document.getElementById('topPane'));
+
+    return (
+      <form>
+      <fieldset>
+        <legend>Remove Shop Category</legend>
+        <p>
+          <input type = "text"
+          id = "CategoryRemove"
+          placeholder = "New" />
+        </p>
+      </fieldset>
+      </form>
+    );
   }
 
     return <div/>;
+  }
+
+  display() {
+    console.log('hit');
   }
 
   render() {

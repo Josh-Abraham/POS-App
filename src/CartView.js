@@ -89,24 +89,7 @@ class CartView extends Component {
     return (
       <div class="container">
       <div>
-        <div class="topOuter">
-          <img class="logo" src={this.props.state.companyLogo}/>
-          <h1 class="extraPadding">{this.props.state.webTitle}</h1>
-        </div>
         <div>
-          <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css"/>
-          <div>
-            <div class="toppane">
-              <li>
-                <p align="right" class="bitcoin">
-                  {this.props.time/10000000000}
-                  <img src="https://cdn4.iconfinder.com/data/icons/proglyphs-shopping-and-finance/512/Coin_-_Bitcoin-512.png"
-                width="30"
-                height="30"
-                class="bitcoin"/></p>
-              </li>
-            </div>
-          </div>
           <div class="outerContainer2">
           <div style={{ backgroundColor: this.props.state.secondaryColor }} class="checkoutView">
 
@@ -122,7 +105,11 @@ class CartView extends Component {
             <h1>
               Cart
             </h1>
-            <img class="cart" src="https://images.ecosia.org/UJ5r4gW663JODjpyJFdbtGRaPJ0=/0x390/smart/http%3A%2F%2Fwww.free-icons-download.net%2Fimages%2Fshopping-cart-logo-icon-70706.png"/>
+            <img
+              class="cart"
+              src="https://images.ecosia.org/UJ5r4gW663JODjpyJFdbtGRaPJ0=/0x390/smart/http%3A%2F%2Fwww.free-icons-download.net%2Fimages%2Fshopping-cart-logo-icon-70706.png"
+              alt=''
+            />
             <div class="secondaryCartScroll">
               {cartItems}
             </div>
@@ -143,7 +130,6 @@ class CartView extends Component {
 
 CartView.proptypes = {
   state: Proptypes.object.isRequired,
-  time: Proptypes.number.isRequired,
   onChange: Proptypes.func.isRequired,
 };
 

@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import AdminPanel from './AdminPanel.js';
 import AlphaView from './AlphaView.js';
+import TopPane from './BitCoinAdder.js';
 import { ItemList } from './ItemData.json';
 
 
@@ -13,7 +14,6 @@ class App extends Component {
     showModal: false,
     userName: 'JavaDD',
     password: 'withMilk',
-    webTitle: 'York University Campus Store',
     showAdmin: false,
     companyLogo: 'https://images.ecosia.org/fvnMKNHdkdTvHOB4DOU5zy-4S1c=/0x390/smart/http%3A%2F%2Fjeffwarren.org%2Fwp-content%2Fuploads%2Fyork_logo.png',
     time: 1,
@@ -30,6 +30,17 @@ class App extends Component {
     categories: ['Womens', 'Mens', 'Gifts'],
     category: 'Womens'
   }
+}
+
+componentDidMount() {
+  // fetch("http://localhost:5000/home")
+  //   .then(res => res.json())
+  //   .then(
+  //     (result) => {
+  //     this.setState({ webTitle: result.webTitle });
+  //     console.log(result)
+  //     }
+  //   )
 }
 
 
@@ -207,7 +218,7 @@ createItems() {
 
   createSortMethods (type) {
     return (
-      <option id={type} value={type}>{type}</option>
+      <option id={type} value={type} key={`Sort Method ${type}`}>{type}</option>
     );
   }
 
@@ -273,7 +284,6 @@ createItems() {
 
 
   render() {
-    let index = -1;
     let listItems = this.sortItems(this.state.sortMethodSelected);
     const sortMethods = this.state.sortMethods.map((type) => this.createSortMethods(type));
     const modal = this.state.showModal ? this.showModal() : null;
@@ -281,19 +291,34 @@ createItems() {
 
       if (this.state.view === 'Main' ) {
         return (
-          <AlphaView
-            state={this.state}
-            createItems={this.createItems.bind(this)}
-            listItems={listItems}
-            sleep={this.sleep.bind(this)}
-            changeSortSelection={this.changeSortSelection.bind(this)}
-            sortMethods={sortMethods}
-            setCurrentCategory={this.setCurrentCategory.bind(this)}
-            modal={modal}
-            adminPanel={adminPanel}
-            toggleAdmin={this.toggleAdmin.bind(this)}
-            onChange = {this.onChange.bind(this)}
-          />
+          <div>
+            <div id="topPane">
+              <div className="topOuter">
+                <img
+                  className="logo"
+                  src={this.state.companyLogo}
+                  alt=''
+                />
+                <h1 className="extraPadding">{this.state.webTitle}</h1>
+              </div>
+              <TopPane
+                time={this.state.time}>
+              </TopPane>
+            </div>
+            <AlphaView
+              state={this.state}
+              createItems={this.createItems.bind(this)}
+              listItems={listItems}
+              sleep={this.sleep.bind(this)}
+              changeSortSelection={this.changeSortSelection.bind(this)}
+              sortMethods={sortMethods}
+              setCurrentCategory={this.setCurrentCategory.bind(this)}
+              modal={modal}
+              adminPanel={adminPanel}
+              toggleAdmin={this.toggleAdmin.bind(this)}
+              onChange = {this.onChange.bind(this)}
+            />
+          </div>
       )
       } else {
         return (

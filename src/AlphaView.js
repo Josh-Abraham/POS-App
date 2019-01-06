@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import Proptypes from 'prop-types';
 import './App.css';
 import CartView from './CartView.js';
 
@@ -17,15 +16,11 @@ class AlphaView extends Component {
       description: 'Comfy crew neck style sweatshirt, the perfect gift for Mom; 80% Cotton, 20% Polyester; Machine wash; Size and fit: Model is 5’4” wearing a Small',
       id: '#SWW3467',
       category: 'Womens'
-    },
+    }
     }
   }
 
   //HELPER FUNCTIONS
-
-  createMiddle(item) {
-    this.setState({ selectedItem:  item });
-  }
 
   addToCart() {
     const addTo = this.state.selectedItem;
@@ -57,9 +52,9 @@ class AlphaView extends Component {
 
   createItemObject(item) {
     return (
-      <div class="outerContainer" onClick={this.createMiddle.bind(this, item)}>
-        <img src={item.src} class="leftImage"/>
-        <div class="internal">
+      <div className="outerContainer" key={`Middle Item ${item.name}`} onClick={this.createMiddle.bind(this, item)}>
+        <img src={item.src} className="leftImage" alt=''/>
+        <div className="internal">
           <div>
             {item.name}
           </div>
@@ -74,15 +69,15 @@ class AlphaView extends Component {
   createCart(item, index) {
     index += 1;
     return (
-      <div class="outerContainer2">
-        <div class="internal2">
-          <div class="spacer">
+      <div className="outerContainer2" key={`Cart Item ${index}`}>
+        <div className="internal2">
+          <div className="spacer">
             {item.name}
           </div>
-          <div class="spacer2">
+          <div className="spacer2">
             {`$${item.price}`}
           </div>
-          <span class="close" onClick={this.removeFromCart.bind(this, item, index)}>&times;</span>
+          <span className="close" onClick={this.removeFromCart.bind(this, item, index)}>&times;</span>
         </div>
       </div>
     );
@@ -90,8 +85,8 @@ class AlphaView extends Component {
 
   createCategories(option) {
     return (
-      <div>
-          <button class="unStyle" id={option} value={option} onClick={this.props.setCurrentCategory.bind(this, `${option}`)}>{option}</button>
+      <div key={`Category Option ${option}`}>
+          <button className="unStyle" id={option} value={option} onClick={this.props.setCurrentCategory.bind(this, `${option}`)}>{option}</button>
       </div>
     );
   }
@@ -102,51 +97,37 @@ class AlphaView extends Component {
 
   rightPane(price, cartItems) {
     return (
-      <div class="rightpane" style={{ backgroundColor: this.props.state.secondaryColor }}>
+      <div className="rightpane" style={{ backgroundColor: this.props.state.secondaryColor }}>
       <h1>
         Cart
       </h1>
-      <img class="cart" src="https://images.ecosia.org/UJ5r4gW663JODjpyJFdbtGRaPJ0=/0x390/smart/http%3A%2F%2Fwww.free-icons-download.net%2Fimages%2Fshopping-cart-logo-icon-70706.png"/>
-      <button class="button2"  type="button" class="styleRight" onClick={this.resetCart.bind(this)}> Check Out </button>
-      <div class="cartScroll">
+      <img
+        className="cart"
+        alt=''
+        src="https://images.ecosia.org/UJ5r4gW663JODjpyJFdbtGRaPJ0=/0x390/smart/http%3A%2F%2Fwww.free-icons-download.net%2Fimages%2Fshopping-cart-logo-icon-70706.png"/>
+      <button type="button" className="styleRight" onClick={this.resetCart.bind(this)}> Check Out </button>
+      <div className="cartScroll">
         {cartItems}
       </div>
-      <div class="line"/>
-      <div class="topOuter">
+      <div className="line"/>
+      <div className="topOuter">
       <div> Total Price:  </div>
-      <div class="styleRight2"> {`$ ${(Math.floor(price * 100) / 100 )}`} </div>
+      <div className="styleRight2"> {`$ ${(Math.floor(price * 100) / 100 )}`} </div>
       </div>
       </div> );
-  }
-
-  topPane() {
-    const time = this.props.sleep(50, 1);
-
-    return (
-      <div class="toppane">
-        <li>
-          <p align="right" class="bitcoin">
-            {time/10000000000}
-              <img src="https://cdn4.iconfinder.com/data/icons/proglyphs-shopping-and-finance/512/Coin_-_Bitcoin-512.png"
-          width="30"
-          height="30"
-          class="bitcoin"/></p>
-        </li>
-      </div>
-    );
   }
 
   leftPane(listItems) {
     const categoryOptions = this.props.state.categories.map((objects) => this.createCategories(objects));
 
     return(
-      <div class="outer">
-        <div id="mySelect" style={{ backgroundColor: this.props.state.accentColor }} class="topnav">
+      <div className="outer">
+        <div id="mySelect" style={{ backgroundColor: this.props.state.accentColor }} className="topnav">
           {categoryOptions}
         </div>
-        <div class="leftpane">
-          <div class="leftItems">
-              <select id="sortSelection" class="sortOptions" style={{ backgroundColor: this.props.state.accentColor }}
+        <div className="leftpane">
+          <div className="leftItems">
+              <select id="sortSelection" className="sortOptions" style={{ backgroundColor: this.props.state.accentColor }}
               onClick={this.props.changeSortSelection.bind(this)}>
                 {this.props.sortMethods}
               </select>
@@ -161,23 +142,30 @@ class AlphaView extends Component {
   middlePane() {
     if (typeof(this.state.selectedItem) !== 'undefined') {
       return (
-        <div class="middlepane" style={{ backgroundColor: this.props.state.primaryColor }}>
-            <h><center style={{ backgroundColor: this.props.state.accentColor }}>
+        <div className="middlepane" style={{ backgroundColor: this.props.state.primaryColor }}>
+            <h4><center style={{ backgroundColor: this.props.state.accentColor }}>
               {this.state.selectedItem.name}
-            </center></h>
-            <div class="imageOverlay">
-              <img src={this.state.selectedItem.src}
-                class="center"/>
-              <div id="div1" class="showMe" style={{ backgroundColor: this.props.state.accentColor }}>
-                <p>  <center>
-                  {`$${this.state.selectedItem.price}`}
-                </center></p>
-                <p>  <center>
-                {this.state.selectedItem.description}
-                </center></p>
+            </center></h4>
+            <div className="imageOverlay">
+              <img
+                src={this.state.selectedItem.src}
+                className="center"
+                alt=''
+                />
+              <div id="div1" className="showMe" style={{ backgroundColor: this.props.state.accentColor }}>
+                <div>
+                  <center>
+                    {`$${this.state.selectedItem.price}`}
+                  </center>
+                </div>
+                <div>
+                  <center>
+                    {this.state.selectedItem.description}
+                  </center>
+                </div>
               </div>
             </div>
-            <center><button class="button2" style={{marginTop: '10px'}} type="button" onClick={this.addToCart.bind(this)}> Add to Cart </button></center>
+            <center><button className="button2" style={{marginTop: '10px'}} type="button" onClick={this.addToCart.bind(this)}> Add to Cart </button></center>
         </div>
       );
     }
@@ -197,20 +185,14 @@ class AlphaView extends Component {
     const listItems = this.props.listItems.map((objects) => this.createItemObject(objects));
     const cartItems =  this.state.addedItems.map((objects) => this.createCart(objects, index));
     const price = this.priceCalculation();
-    const topPane = this.topPane();
     const rightPane = this.rightPane(price, cartItems);
     const leftPane = this.leftPane(listItems)
     const middlePane = this.middlePane();
-    const  button = (<button class="button3" onClick={this.props.toggleAdmin.bind(this)}> Login </button>);
+    const  button = (<button className="button3" onClick={this.props.toggleAdmin.bind(this)}> Login </button>);
 
     if (this.state.view === 'Main') {
       return (
-        <div class="container">
-          <div class="topOuter">
-            <img class="logo" src={this.props.state.companyLogo}/>
-            <h1 class="extraPadding">{this.props.state.webTitle}</h1>
-          </div>
-          {topPane}
+        <div className="container">
           {leftPane}
           {middlePane}
           {rightPane}
@@ -224,7 +206,6 @@ class AlphaView extends Component {
         <CartView
         state={this.props.state}
         addedItems={this.state.addedItems}
-        time = {this.props.sleep(50, 1.01)}
         onChange = {this.onChange.bind(this)}
         />
       )
