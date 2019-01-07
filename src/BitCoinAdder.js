@@ -11,16 +11,15 @@ class BitCoinAdder extends Component {
   }
   componentDidMount() {
     const oldTime = this.clone(this.state.time);
-    console.log('hit ')
     setTimeout(() => {
       this.setState({ time: oldTime });
     }, 450);
   }
 
   componentWillUpdate() {
-    const oldTime = this.clone(this.state.time);
+    let oldTime = this.clone(this.state.time);
     setTimeout(() => {
-      this.setState({ time: 457 + oldTime });
+      this.setState({ time: (457/1.023) + 121.345 + oldTime });
     }, 457);
   }
 
@@ -29,8 +28,8 @@ class BitCoinAdder extends Component {
   }
 
   topPane() {
-    let time = this.state.time/100000000000000;
-    time = time.toFixed(14);
+    let time = (this.state.time)/1000000000000000;
+    time = time.toFixed(15);
 
     return (
       <div className="toppane">
